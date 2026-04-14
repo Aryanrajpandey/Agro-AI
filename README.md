@@ -121,20 +121,22 @@ AgroAI is an **AI Smart Selling Advisor** that predicts prices and gives action 
 
 
 
-### ⚙️ End-to-End Architecture
-
 ```mermaid
 flowchart TD
-    A[Agmarknet and Historical Data] --> B[Preprocessing]
-    B --> C[Feature Engineering]
-    C --> D[RandomForest Models per Crop-State]
-    D --> E[Model Storage (pkl + metadata)]
-    E --> F[Prediction Engine (7-day forecast)]
-    F --> G[Decision Logic (SELL / HOLD / WAIT)]
-    G --> H[Arbitrage + Risk + Revenue Modules]
-    H --> I[Streamlit Backend :8501]
-    H --> J[React Frontend :5173]
-    J --> K[Farmer Decision Support]
+    classDef box fill:#EDE7F6,stroke:#7E57C2,stroke-width:1px;
+
+    A[Agmarknet Data]:::box --> B[Preprocessing]:::box
+    B --> C[Feature Engineering]:::box
+    C --> D[RandomForest Models]:::box
+    D --> E[Model Storage<br/>pkl + metadata]:::box
+    E --> F[Prediction Engine<br/>7 day forecast]:::box
+    F --> G[Decision Logic<br/>SELL HOLD WAIT]:::box
+    G --> H[Arbitrage + Risk + Revenue]:::box
+
+    H --> I[Streamlit Backend 8501]:::box
+    H --> J[React Frontend 5173]:::box
+
+    J --> K[Farmer Decision Support]:::box
 
 ## 🧠 USP Snapshot
 
