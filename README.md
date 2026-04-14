@@ -121,6 +121,8 @@ AgroAI is an **AI Smart Selling Advisor** that predicts prices and gives action 
 
 
 
+## ⚙️ End-to-End Architecture
+
 ```mermaid
 flowchart TD
     classDef box fill:#EDE7F6,stroke:#7E57C2,stroke-width:1px;
@@ -137,6 +139,8 @@ flowchart TD
     H --> J[React Frontend 5173]:::box
 
     J --> K[Farmer Decision Support]:::box
+```
+
 
 ## 🧠 USP Snapshot
 
