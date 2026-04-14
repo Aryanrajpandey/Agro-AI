@@ -1,109 +1,125 @@
-# 🌾 AgroAI – Smart Selling Advisor
+<div align="center">
 
-> From Data → Decisions → Profit  
-> AI-powered market intelligence for smarter crop selling.
+# 🌾 AgroAI – The Smart Selling Advisor
+
+### *From मेहनत to Profit: AI-Powered Market Intelligence for Farmers*
+
+<br>
+
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react)
+![Streamlit](https://img.shields.io/badge/Streamlit-Backend-FF4B4B?style=for-the-badge&logo=streamlit)
+![Scikit](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python)
+![Telegram](https://img.shields.io/badge/Telegram-Bot-2CA5E0?style=for-the-badge&logo=telegram)
+
+<br>
+
+![n8n](https://img.shields.io/badge/n8n-Automation-EA4AAA?style=for-the-badge)
+![LLM](https://img.shields.io/badge/GenAI-LLM-black?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Live-brightgreen?style=for-the-badge)
+
+</div>
 
 ---
 
-## 🧠 Tech Stack
+<div align="center">
 
-![React](https://img.shields.io/badge/Frontend-React-blue)
-![Vite](https://img.shields.io/badge/Build-Vite-purple)
-![Streamlit](https://img.shields.io/badge/Backend-Streamlit-red)
-![Python](https://img.shields.io/badge/Core-Python-yellow)
-![Scikit](https://img.shields.io/badge/ML-Scikit--Learn-orange)
-![LLM](https://img.shields.io/badge/GenAI-LLM-black)
-![n8n](https://img.shields.io/badge/Automation-n8n-pink)
-![Telegram](https://img.shields.io/badge/Bot-Telegram-blue)
+### 🔗 Navigation
 
----
+[The Problem](#-the-problem) • 
+[Our Solution](#-our-solution) • 
+[Tech Stack](#-tech-stack) • 
+[Features](#-key-features) • 
+[Architecture](#-end-to-end-architecture) • 
+[Business Model](#-business-model)
 
-## 🔗 Quick Links
-
-- [Problem](#-the-problem)
-- [Solution](#-our-solution)
-- [Tech Stack](#-tech-stack)
-- [Features](#-key-features)
-- [Architecture](#-architecture)
-- [Business Model](#-business-model)
+</div>
 
 ---
 
 ## 🚨 The Problem
 
-Indian farmers face **price uncertainty at selling time**:
+Indian farmers face price uncertainty at the most critical decision point: **selling**.
 
-- 📉 Small farmers suffer heavy losses from price drops  
-- 📊 Lack of real-time mandi insights  
-- ⏳ Sell immediately after harvest (lowest prices)  
-- 🌐 Tools are not local-language friendly  
+- 86% are small farmers → highly sensitive to price drops  
+- Mandi price information is fragmented  
+- Farmers sell immediately after harvest (lowest prices)  
+- Tools are not beginner-friendly or multilingual  
 
 ### Core Questions:
-- When should I sell?
-- Where should I sell?
+- ❓ When should I sell?  
+- ❓ Where should I sell?  
 
 ---
 
 ## 💡 Our Solution
 
-AgroAI provides **AI-powered selling decisions**:
+AgroAI is an **AI Smart Selling Advisor** that predicts prices and gives action signals.
 
-- 📈 Predicts crop prices (short-term)
-- 🧠 Recommends: **SELL / HOLD / WAIT**
-- 📍 Suggests best mandi location
-- 🌍 Supports multilingual users
+- 📈 Predicts upcoming mandi prices  
+- 🤖 Recommends **SELL / HOLD / WAIT**  
+- 📍 Suggests best nearby mandi  
+- 🌍 Supports bilingual usage  
 
 ### 🎯 Outcome:
 - Better timing  
-- Better price  
-- Higher profit  
+- Better mandi choice  
+- Better profit  
 
 ---
 
 ## 🧰 Tech Stack
 
-| Layer        | Technology |
-|-------------|-----------|
-| Frontend     | React + Vite |
-| Backend      | Streamlit |
-| ML Model     | Scikit-learn |
-| Language     | Python |
-| Automation   | n8n |
-| GenAI Layer  | LLM |
-| Chatbot      | Telegram Bot |
+<div align="center">
+
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=flat-square)
+![Vite](https://img.shields.io/badge/Vite-Build-purple?style=flat-square)
+![Streamlit](https://img.shields.io/badge/Streamlit-Backend-red?style=flat-square)
+![Scikit](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=flat-square)
+![Python](https://img.shields.io/badge/Python-Core-blue?style=flat-square)
+![Telegram](https://img.shields.io/badge/Telegram-Chatbot-2CA5E0?style=flat-square)
+![n8n](https://img.shields.io/badge/n8n-Automation-pink?style=flat-square)
+![LLM](https://img.shields.io/badge/LLM-GenAI-black?style=flat-square)
+
+</div>
 
 ---
 
 ## 🚀 Key Features
 
 ### 1️⃣ Real-Time + Historical Intelligence
-- Uses mandi trends
-- Seasonal pattern detection
+- Uses mandi trends  
+- High-frequency updates  
+- Seasonal pattern analysis  
 
-### 2️⃣ Price Prediction
-- Crop + State specific forecasting
-- Visual comparison charts
+### 2️⃣ Local Mandi Price Prediction
+- Crop-state forecasting  
+- Visual price comparison  
+- AI recommendation engine  
 
-### 3️⃣ Multilingual Support
-- Hindi + English interface
-- Farmer-friendly UX
+### 3️⃣ Multilingual Accessibility
+- Hindi + English  
+- Farmer-friendly UI  
 
 ### 4️⃣ Profit Optimization
-- Arbitrage detection
-- Transport-aware logic
-- Revenue calculator
+- Arbitrage detection  
+- Distance-aware pricing  
+- Revenue estimation  
 
 ---
 
-## ✅ What AgroAI Can Do
+## ✅ What AgroAI Can Do Today
 
-- 📅 7-day price prediction
-- 📊 Performance metrics (R2, RMSE)
-- 📈 Trend analysis (30 days)
-- ⚠️ Risk level prediction (High/Medium/Low)
-- 💰 Revenue estimation
+- 📅 7-day price forecast  
+- 📊 Performance metrics (R², MAE, RMSE)  
+- 📈 Trend charts (30-day + forecast)  
+- ⚠️ Risk classification  
+- 💰 Revenue estimation  
 
 ---
+
+
+
 
 ## ⚙️ Architecture
 Agmarknet Data
