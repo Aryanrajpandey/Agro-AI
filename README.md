@@ -200,13 +200,4 @@ project/
 └── requirements.txt
 
 
-## 📚 Reference Notes
 
-💡 Grounded in real-world farmer challenges and designed for actionable, data-driven decision making.
-
-Problem framing and strategy points in this README are aligned with your presentation deck themes, including:
-
-Farmer distress-selling context
-Crop price decision intelligence
-Mandi comparison and profitability focus
-Accessibility-first product direction
