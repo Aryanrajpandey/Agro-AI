@@ -2,7 +2,7 @@
 
 # 🌾 AgroAI – The Smart Selling Advisor
 
-### *From मेहनत to Profit: AI-Powered Market Intelligence for Farmers*
+### *From मेहनत to Profit: AI-Powered Market Intelligence for Farmers *
 
 <br>
 
