@@ -21,6 +21,10 @@ from src.config import DATASET_PATH
 APP_DIR = Path(__file__).resolve().parent
 MODELS_DIR = APP_DIR / "models"
 ASSETS_DIR = APP_DIR / "assets"
+GDRIVE_MODELS_URL = os.environ.get(
+    "MODELS_GDRIVE_URL",
+    "https://drive.google.com/drive/folders/1zL9uQJDCQnbtwHFpXtRgz8boQAj2Oe6o",
+)
 
 st.set_page_config(layout="wide", page_title="🌾 AgroAI Smart Selling Advisor")
 
@@ -68,6 +72,73 @@ def render_section_close():
     st.markdown("</section>", unsafe_allow_html=True)
 
 
+def models_ready():
+    return MODELS_DIR.exists() and any(MODELS_DIR.glob("*.pkl"))
+
+
+def extract_gdrive_folder_id(url):
+    if not url:
+        return ""
+    if "folders/" in url:
+        return url.split("folders/")[1].split("?")[0]
+    return url.strip()
+
+
+def ensure_models_downloaded():
+    if models_ready():
+        return
+    folder_id = extract_gdrive_folder_id(GDRIVE_MODELS_URL)
+    if not folder_id:
+        st.error("❌ Missing Google Drive folder link for models.")
+        st.stop()
+    try:
+        import gdown
+    except ImportError:
+        st.error("❌ Dependency missing: gdown. Add it to requirements.txt.")
+        st.stop()
+    try:
+        MODELS_DIR.mkdir(parents=True, exist_ok=True)
+        gdown.download_folder(id=folder_id, output=str(MODELS_DIR), quiet=False, use_cookies=False)
+    except Exception as exc:
+        st.error(f"❌ Failed to download models from Google Drive: {exc}")
+        st.stop()
+
+
+def verify_models():
+    metadata_path = MODELS_DIR / "metadata.json"
+    model_files = list(MODELS_DIR.glob("*.pkl"))
+    if not metadata_path.exists():
+        st.error("❌ Missing models/metadata.json after download.")
+        st.stop()
+    if not model_files:
+        st.error("❌ No .pkl model files found after download.")
+        st.stop()
+    try:
+        with open(metadata_path, "r") as f:
+            metadata = json.load(f)
+    except Exception as exc:
+        st.error(f"❌ Failed to read models/metadata.json: {exc}")
+        st.stop()
+
+    def safe_name(value):
+        return str(value).replace("/", "_").replace("\\", "_")
+
+    missing = []
+    for crop, states in metadata.items():
+        for state in states:
+            model_name = f"{safe_name(crop)}_{safe_name(state)}.pkl"
+            if not (MODELS_DIR / model_name).exists():
+                missing.append(model_name)
+
+    if missing:
+        sample = ", ".join(missing[:5])
+        st.error(
+            "❌ Missing model files listed in metadata.json: "
+            f"{sample}{'...' if len(missing) > 5 else ''}"
+        )
+        st.stop()
+
+
 st.markdown(
     """
     <div class="agroai-header fade-in">
@@ -78,6 +149,13 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+if not models_ready():
+    with st.spinner("Downloading model files..."):
+        ensure_models_downloaded()
+        verify_models()
+else:
+    verify_models()
 
 # Load available combinations instantly from metadata
 @st.cache_data(show_spinner=False)
@@ -123,7 +201,7 @@ if is_mobile:
         unsafe_allow_html=True,
     )
 
-    with st.expander("🌾 Prediction Controls", expanded=False):
+    with st.expander("🌾 Prediction Controls", expanded=True):
         st.markdown("<div class='mobile-controls-card'>", unsafe_allow_html=True)
         crop = st.selectbox("🌽 Select Crop", sorted(available_combos.keys()), key="mobile_crop")
         state = st.selectbox("📍 Select State", sorted(available_combos[crop]), key="mobile_state")

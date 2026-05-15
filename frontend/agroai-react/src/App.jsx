@@ -73,7 +73,7 @@ function App() {
     if (!isProcessing || processingMode !== "outbound") return;
 
     const timeout = setTimeout(() => {
-      window.location.href = "http://localhost:8501";
+      window.location.href = "http://localhost:8503";
     }, 2800);
 
     return () => {
