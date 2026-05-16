@@ -5,11 +5,29 @@ __pycache__/
 # Training artifacts and datasets
 models/
 data/
+backend/models/
+backend/data/
 
 # Local environments
 .venv/
 venv/
 
+# Node/Vite
+node_modules/
+dist/
+dist-ssr/
+*.local
+
 # OS/editor
 .DS_Store
 .vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Allow frontend data assets
+!src/data/
+!src/data/**

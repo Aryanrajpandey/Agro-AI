@@ -183,20 +183,51 @@ flowchart TD
 ## 📂 Project Structure
 
 ```
-hackmsit/
-├── app.py
-├── offline_train.py
-├── check_accuracy.py
-├── verify_cache.py
-├── requirements.txt
-├── assets/
+repo/
+├── backend/
+│   ├── app.py
+│   ├── offline_train.py
+│   ├── check_accuracy.py
+│   ├── verify_cache.py
+│   ├── assets/
+│   ├── data/
+│   ├── models/
+│   ├── src/
+│   └── agmarknet-india-commodity-prices-2024-2025/
+├── public/
 ├── src/
-├── models/
-├── agmarknet-india-commodity-prices-2024-2025/
-└── Agro-Ai/
-    ├── AgroAIDemo/
-    └── frontend/
-        └── agroai-react/
+├── index.html
+├── package.json
+├── vite.config.js
+├── requirements.txt
+├── runtime.txt
+└── vercel.json
+```
+
+---
+
+## 🚀 Deployment (Streamlit + Vercel)
+
+### Backend: Streamlit Cloud
+1) Push this repo to GitHub.
+2) Go to https://share.streamlit.io → New app.
+3) Set **Main file path** to `backend/app.py`.
+4) Add this secret if you host models on Google Drive:
+```
+MODELS_GDRIVE_URL = "https://drive.google.com/drive/folders/<your-folder-id>"
+```
+5) Reboot the app.
+
+> Make sure the Google Drive folder is shared as **Anyone with the link**.
+
+### Frontend: Vercel
+1) Import the same repo in Vercel.
+2) Vercel will detect Vite automatically (root is the frontend).
+3) Deploy.
+
+Optional environment variable for frontend API calls:
+```
+VITE_BACKEND_URL = "https://<your-streamlit-app>.streamlit.app"
 ```
 ## 📚 Reference Notes
 

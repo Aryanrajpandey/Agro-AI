@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
-from src.data_preprocessing import load_and_clean_data
-from src.feature_engineering import create_features
-from src.train_model import train_model
-from src.config import DATASET_PATH
+from backend.src.data_preprocessing import load_and_clean_data
+from backend.src.feature_engineering import create_features
+from backend.src.train_model import train_model
+from backend.src.config import DATASET_PATH
 
 # Load data
 df = load_and_clean_data(DATASET_PATH)

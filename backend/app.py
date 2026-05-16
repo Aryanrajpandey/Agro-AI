@@ -12,11 +12,11 @@ from urllib.parse import quote_plus
 from pathlib import Path
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
-from src.predict import predict_future
-from src.data_preprocessing import load_and_clean_data
-from src.feature_engineering import create_features
-from src.train_model import train_model
-from src.config import DATASET_PATH
+from backend.src.predict import predict_future
+from backend.src.data_preprocessing import load_and_clean_data
+from backend.src.feature_engineering import create_features
+from backend.src.train_model import train_model
+from backend.src.config import DATASET_PATH
 
 APP_DIR = Path(__file__).resolve().parent
 MODELS_DIR = APP_DIR / "models"
@@ -180,7 +180,7 @@ except FileNotFoundError:
             available_combos[crop_name] = []
         available_combos[crop_name].append(state_name)
     if not available_combos:
-        st.error("❌ No model metadata or per-combo models found. Please run `python3 offline_train.py` first.")
+        st.error("❌ No model metadata or per-combo models found. Please run `python3 backend/offline_train.py` first.")
         st.stop()
     st.warning("⚠️ metadata.json not found. Using model files to build crop/state list.")
 

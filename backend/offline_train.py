@@ -3,17 +3,19 @@ Train model ONCE and save it (offline training)
 Run this once, model gets saved, then app.py just loads and predicts!
 """
 
-import pandas as pd
-import numpy as np
-import pickle
-import os
 import json
+import os
+import pickle
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
-from src.data_preprocessing import load_and_clean_data
-from src.feature_engineering import create_features
-from src.train_model import train_model
-from src.config import DATASET_PATH
+from backend.src.data_preprocessing import load_and_clean_data
+from backend.src.feature_engineering import create_features
+from backend.src.train_model import train_model
+from backend.src.config import DATASET_PATH
 
 print("\n" + "="*70)
 print("🌾 OFFLINE MODEL TRAINING - ONE TIME ONLY")
@@ -24,7 +26,9 @@ print("\n📚 Loading data...")
 df = load_and_clean_data(DATASET_PATH)
 
 # Create models directory
-os.makedirs("models", exist_ok=True)
+APP_DIR = Path(__file__).resolve().parent
+MODELS_DIR = APP_DIR / "models"
+MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Train a model for each crop-state combination and save
 print("\n🔧 Training models for all crop-state combinations...")
@@ -91,7 +95,7 @@ for i, crop in enumerate(all_crops):
             # ✅ FIX: Save each model to its own file instead of one giant file
             safe_crop = crop.replace('/', '_').replace('\\', '_')
             safe_state = state.replace('/', '_').replace('\\', '_')
-            model_file_path = f"models/{safe_crop}_{safe_state}.pkl"
+            model_file_path = MODELS_DIR / f"{safe_crop}_{safe_state}.pkl"
             
             with open(model_file_path, 'wb') as f:
                 pickle.dump(model_data, f)
@@ -109,7 +113,7 @@ for i, crop in enumerate(all_crops):
             continue
 
 # ✅ FIX: Save the metadata map for instant app loading
-with open("models/metadata.json", "w") as jf:
+with open(MODELS_DIR / "metadata.json", "w") as jf:
     json.dump(available_combos, jf)
 
 print("\n" + "="*70)
